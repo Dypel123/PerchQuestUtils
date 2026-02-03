@@ -1,4 +1,4 @@
-package dev.dypel.perchTasktypes.type;
+package dev.dypel.perchQuestUtils.type;
 
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
@@ -47,7 +47,6 @@ public final class EntityInteractionTaskType extends BukkitTaskType {
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onPlayerInteractEntity(PlayerInteractEntityEvent event) {
         // Only process main hand to avoid double counting
-        // Unless the task specifically requires off-hand
         if (event.getHand() == EquipmentSlot.OFF_HAND) {
             // Check if any task specifically requires off-hand before returning
             Player player = event.getPlayer();
