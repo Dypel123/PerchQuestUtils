@@ -1,7 +1,7 @@
-package dev.dypel.perchQuestUtils;
+package me.perch.QuestUtils;
 
 import com.leonardobishop.quests.bukkit.BukkitQuestsPlugin;
-import dev.dypel.perchQuestUtils.type.EntityInteractionTaskType;
+import me.perch.QuestUtils.type.EntityInteractionTaskType;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class PerchQuestUtils extends JavaPlugin {

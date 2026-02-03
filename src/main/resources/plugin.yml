@@ -1,6 +1,6 @@
 name: PerchQuestUtils
-version: '1.0'
-main: dev.dypel.perchQuestUtils.PerchQuestUtils
+version: '${version}'
+main: me.perch.QuestUtils.PerchQuestUtils
 api-version: '1.21'
 author: Dypel
 description: Custom task types for Quests plugin

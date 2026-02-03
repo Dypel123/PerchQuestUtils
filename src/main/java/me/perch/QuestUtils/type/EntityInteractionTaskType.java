@@ -1,4 +1,4 @@
-package dev.dypel.perchQuestUtils.type;
+package me.perch.QuestUtils.type;
 
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
