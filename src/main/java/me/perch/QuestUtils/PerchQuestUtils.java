@@ -2,6 +2,7 @@ package me.perch.QuestUtils;
 
 import com.leonardobishop.quests.bukkit.BukkitQuestsPlugin;
 import me.perch.QuestUtils.type.EntityInteractionTaskType;
+import me.perch.QuestUtils.type.ChatTaskType;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class PerchQuestUtils extends JavaPlugin {
@@ -31,10 +32,11 @@ public final class PerchQuestUtils extends JavaPlugin {
     }
 
     private void registerTaskTypes() {
-        // Register the entity interaction task type
-        EntityInteractionTaskType entityInteractionTaskType = new EntityInteractionTaskType(questsPlugin);
-        questsPlugin.getTaskTypeManager().registerTaskType(entityInteractionTaskType);
+        for (TaskTypeRegistry type : TaskTypeRegistry.values()) {
+            questsPlugin.getTaskTypeManager()
+                    .registerTaskType(type.create(questsPlugin));
 
-        getLogger().info("Registered entityinteraction task type!");
+            getLogger().info("Registered task type: " + type.getTaskId());
+        }
     }
 }
