@@ -27,7 +27,7 @@ public final class ChatTaskType extends BukkitTaskType {
         this.plugin = plugin;
 
         // Config validators
-        super.addConfigValidator(TaskUtils.useRequiredConfigValidator(this, "message"));
+        super.addConfigValidator(TaskUtils.useRequiredConfigValidator(this, "message", "messages"));
         super.addConfigValidator(TaskUtils.useBooleanConfigValidator(this, "ignore-case"));
         super.addConfigValidator(
                 TaskUtils.useEnumConfigValidator(

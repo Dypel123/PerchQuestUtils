@@ -35,8 +35,7 @@ public final class EntityInteractionTaskType extends BukkitTaskType {
         super.addConfigValidator(TaskUtils.useItemStackConfigValidator(this, "item"));
         super.addConfigValidator(TaskUtils.useIntegerConfigValidator(this, "data"));
         super.addConfigValidator(TaskUtils.useBooleanConfigValidator(this, "exact-match"));
-        super.addConfigValidator(TaskUtils.useEnumConfigValidator(this, EntityType.class, "entity", "entities"));
-        super.addConfigValidator(TaskUtils.useEnumConfigValidator(this, EquipmentSlot.class, "hand", "hands"));
+        super.addConfigValidator(TaskUtils.useEntityListConfigValidator(this, "entity", "entities"));
     }
 
     @Override
@@ -101,7 +100,7 @@ public final class EntityInteractionTaskType extends BukkitTaskType {
             Task task = pendingTask.task();
             TaskProgress taskProgress = pendingTask.taskProgress();
 
-            super.debug("Player interacted with entity " + entityType + " using " + hand,
+            super.debug("Player interacted with entity " + entityType,
                     quest.getId(), task.getId(), player.getUniqueId());
 
             // Check hand requirement
