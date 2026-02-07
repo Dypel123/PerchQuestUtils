@@ -45,37 +45,9 @@ public final class EntityInteractionTaskType extends BukkitTaskType {
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onPlayerInteractEntity(PlayerInteractEntityEvent event) {
-        // Only process main hand to avoid double counting
-        if (event.getHand() == EquipmentSlot.OFF_HAND) {
-            // Check if any task specifically requires off-hand before returning
-            Player player = event.getPlayer();
-            QPlayer qPlayer = plugin.getPlayerManager().getPlayer(player.getUniqueId());
-            if (qPlayer == null) {
-                return;
-            }
-
-            boolean hasOffHandRequirement = false;
-            for (TaskUtils.PendingTask pendingTask : TaskUtils.getApplicableTasks(player, qPlayer, this, TaskConstraintSet.ALL)) {
-                Task task = pendingTask.task();
-                if (task.hasConfigKey("hand") || task.hasConfigKey("hands")) {
-                    // Only continue if this specific task requires off-hand
-                    Object handValue = task.getConfigValue("hand");
-                    if (handValue == null) {
-                        handValue = task.getConfigValue("hands");
-                    }
-                    if (handValue != null) {
-                        String handStr = handValue.toString().toUpperCase();
-                        if (handStr.contains("OFF_HAND")) {
-                            hasOffHandRequirement = true;
-                            break;
-                        }
-                    }
-                }
-            }
-
-            if (!hasOffHandRequirement) {
-                return;
-            }
+        // Only allow MAIN_HAND interactions
+        if (event.getHand() != EquipmentSlot.HAND) {
+            return;
         }
 
         Player player = event.getPlayer();
@@ -92,8 +64,7 @@ public final class EntityInteractionTaskType extends BukkitTaskType {
 
         Entity entity = event.getRightClicked();
         EntityType entityType = entity.getType();
-        EquipmentSlot hand = event.getHand();
-        ItemStack item = player.getInventory().getItem(hand);
+        ItemStack item = player.getInventory().getItemInMainHand();
 
         for (TaskUtils.PendingTask pendingTask : TaskUtils.getApplicableTasks(player, qPlayer, this, TaskConstraintSet.ALL)) {
             Quest quest = pendingTask.quest();
@@ -102,14 +73,6 @@ public final class EntityInteractionTaskType extends BukkitTaskType {
 
             super.debug("Player interacted with entity " + entityType,
                     quest.getId(), task.getId(), player.getUniqueId());
-
-            // Check hand requirement
-            if (!TaskUtils.matchEnum(EquipmentSlot.class, this, pendingTask, hand,
-                    player.getUniqueId(), "hand", "hands")) {
-                super.debug("Hand does not match requirement, continuing...",
-                        quest.getId(), task.getId(), player.getUniqueId());
-                continue;
-            }
 
             // Check entity type requirement
             if (!TaskUtils.matchEnum(EntityType.class, this, pendingTask, entityType,
