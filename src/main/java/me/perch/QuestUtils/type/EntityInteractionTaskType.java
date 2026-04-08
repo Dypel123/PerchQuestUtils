@@ -14,6 +14,7 @@ import com.leonardobishop.quests.common.quest.Task;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
@@ -36,6 +37,7 @@ public final class EntityInteractionTaskType extends BukkitTaskType {
         super.addConfigValidator(TaskUtils.useIntegerConfigValidator(this, "data"));
         super.addConfigValidator(TaskUtils.useBooleanConfigValidator(this, "exact-match"));
         super.addConfigValidator(TaskUtils.useEntityListConfigValidator(this, "entity", "entities"));
+        super.addConfigValidator(TaskUtils.useEnumConfigValidator(this, Event.Result.class, "use-item-in-hand-result", "use-item-in-hand-results"));
     }
 
     @Override
