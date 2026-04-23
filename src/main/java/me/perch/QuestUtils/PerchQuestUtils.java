@@ -3,9 +3,7 @@ package me.perch.QuestUtils;
 import com.leonardobishop.quests.bukkit.BukkitQuestsPlugin;
 import com.leonardobishop.quests.bukkit.tasktype.BukkitTaskTypeManager;
 import com.leonardobishop.quests.common.plugin.Quests;
-import me.perch.QuestUtils.type.EntityInteractionTaskType;
-import me.perch.QuestUtils.type.ChatTaskType;
-import me.perch.QuestUtils.type.PerchWalkingTaskType;
+import me.perch.QuestUtils.type.*;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -26,6 +24,8 @@ public final class PerchQuestUtils extends JavaPlugin {
         taskTypeManager.registerTaskType(new ChatTaskType((BukkitQuestsPlugin) questsPlugin));
         taskTypeManager.registerTaskType(new EntityInteractionTaskType((BukkitQuestsPlugin) questsPlugin));
         taskTypeManager.registerTaskType(new PerchWalkingTaskType((BukkitQuestsPlugin) questsPlugin));
+        taskTypeManager.registerTaskType(new HoneyBottlingTaskType((BukkitQuestsPlugin) questsPlugin));
+        taskTypeManager.registerTaskType(new DisguiseKillTaskType((BukkitQuestsPlugin) questsPlugin));
 
         getLogger().info("PerchTasktypes has been enabled successfully!");
     }
