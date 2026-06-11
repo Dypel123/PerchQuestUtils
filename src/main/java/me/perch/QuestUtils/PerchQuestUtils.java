@@ -23,7 +23,6 @@ public final class PerchQuestUtils extends JavaPlugin {
         // Register custom task types
         taskTypeManager.registerTaskType(new ChatTaskType((BukkitQuestsPlugin) questsPlugin));
         taskTypeManager.registerTaskType(new EntityInteractionTaskType((BukkitQuestsPlugin) questsPlugin));
-        taskTypeManager.registerTaskType(new PerchWalkingTaskType((BukkitQuestsPlugin) questsPlugin));
         taskTypeManager.registerTaskType(new HoneyBottlingTaskType((BukkitQuestsPlugin) questsPlugin));
         taskTypeManager.registerTaskType(new DisguiseKillTaskType((BukkitQuestsPlugin) questsPlugin));
 

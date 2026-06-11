@@ -37,7 +37,7 @@ public final class EntityInteractionTaskType extends BukkitTaskType {
         super.addConfigValidator(TaskUtils.useIntegerConfigValidator(this, "data"));
         super.addConfigValidator(TaskUtils.useBooleanConfigValidator(this, "exact-match"));
         super.addConfigValidator(TaskUtils.useEntityListConfigValidator(this, "entity", "entities"));
-        super.addConfigValidator(TaskUtils.useEnumConfigValidator(this, Event.Result.class, "use-item-in-hand-result", "use-item-in-hand-results"));
+        super.addConfigValidator(TaskUtils.useEnumConfigValidator(this, Event.Result.class, "use-item-in-hand-result", "use-item-in-hand-results", false));
     }
 
     @Override

@@ -33,7 +33,9 @@ public final class ChatTaskType extends BukkitTaskType {
                 TaskUtils.useEnumConfigValidator(
                         this,
                         TaskUtils.StringMatchMode.class,
-                        "message-match-mode"
+                        "message-match-mode",
+                        "message-match-modes",
+                        true
                 )
         );
     }
