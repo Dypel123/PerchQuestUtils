@@ -15,7 +15,7 @@ public final class PerchQuestUtils extends JavaPlugin {
         BukkitTaskTypeManager taskTypeManager = (BukkitTaskTypeManager) questsPlugin.getTaskTypeManager();
 
         if (questsPlugin == null) {
-            getLogger().severe("Quests plugin not found! Disabling PerchTasktypes...");
+            getLogger().severe("Quests plugin not found! Disabling EvergreenTasktypes...");
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
@@ -25,13 +25,15 @@ public final class PerchQuestUtils extends JavaPlugin {
         taskTypeManager.registerTaskType(new EntityInteractionTaskType((BukkitQuestsPlugin) questsPlugin));
         taskTypeManager.registerTaskType(new HoneyBottlingTaskType((BukkitQuestsPlugin) questsPlugin));
         taskTypeManager.registerTaskType(new DisguiseKillTaskType((BukkitQuestsPlugin) questsPlugin));
+        taskTypeManager.registerTaskType(new DyingTaskType((BukkitQuestsPlugin) questsPlugin));
+        taskTypeManager.registerTaskType(new PistonPushingTaskType((BukkitQuestsPlugin) questsPlugin));
 
-        getLogger().info("PerchTasktypes has been enabled successfully!");
+        getLogger().info("EvergreenTasktypes has been enabled successfully!");
     }
 
     @Override
     public void onDisable() {
-        getLogger().info("PerchTasktypes has been disabled!");
+        getLogger().info("EvergreenTasktypes has been disabled!");
     }
 
 }

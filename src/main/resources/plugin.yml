@@ -1,4 +1,4 @@
-name: PerchQuestUtils
+name: EvergreenQuestUtils
 version: '${version}'
 main: me.perch.QuestUtils.PerchQuestUtils
 api-version: '1.21'
